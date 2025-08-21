@@ -1,0 +1,243 @@
+CUDA available: True
+GPU count: 1
+Current GPU: NVIDIA GeForce RTX 4070 Laptop GPU
+GPU memory: 8.6 GB
+Model is on: cuda:0
+Using batch size: 4
+c:\Users\laran\Home\Documents\code\venv\NLPvenv\Lib\site-packages\transformers\training_args.py:1575: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
+  warnings.warn(
+Using batch size: 4
+C:\Users\laran\AppData\Local\Temp\ipykernel_12712\1253686246.py:1: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer=Trainer(
+Starting training...
+Baseline: It transformed Japanese ink painting.
+model evaluation before optimization
+####################
+
+Evaluating on 50 samples...
+
+Example 1:
+JA: 1917年（大正6年）勧学が追贈されている。
+REF: In 1917, he was promoted to Kangaku ranking after his death.
+GEN: In 1917, Kangaku was given away.
+BLEU: 13.09
+
+Example 2:
+JA: それゆえに直日・直堂も、修行者も、両者ともが警策を「与える」・「いただく」前後に合掌低頭し、お互いに感謝の意を表わす。
+REF: Therefore, both of Jikijitsu or jikido and meditators make the gassho (place the palms of the hands together in the position of prayer) and bow their head to show their gratitude each other, before and after the keisaku (kyosaku) is to "give" and "receive".
+GEN: Consequently, both Nao, Naodo, and the practitioners of Nao and Nao, both of whom give and receive warnings, and both of them give and receive warnings, and both of them give and receive warnings, and both of them give and receive warnings, and both of them express their gratitude to each other.
+BLEU: 4.17
+
+Example 3:
+JA: 古市 胤栄（ふるいち いんえい、生年不詳 - 永正2年（1505年））は、戦国時代 (日本)の僧・武将。
+REF: Ine FURUICHI (year of birth unknown - 1505) is a priest and a Japanese military commander during the Sengoku period.
+GEN: Furuichi Inei (year of birth unknown - 1505) was a priest and military commander during the Sengoku period (period of warring states in Japan).
+BLEU: 44.41
+
+Example 4:
+JA: 道忠自身は鑑真の弟子で、律宗の僧侶であったが、戒壇が設けられた下野薬師寺との関連か東国に住し、広く弟子を持つ僧侶であった。
+REF: Dochu himself was a disciple of Ganjin and a Buddhist priest in Ritsu sect, but he lived in Togoku maybe because he had a relationship with Shimotsuke Yakushi-ji Temple which had Kaidan (Buddhist ordination platform) and he had many disciples across a wide range.
+GEN: Michiada himself was a disciple of Kanshin and a priest of the Ritsuryo sect, but he was a priest who had a large number of disciples and lived in Eastern Japan in connection with Shimotsuke Yakushi-ji Temple where the Kaidan was established.
+BLEU: 21.20
+
+Example 5:
+JA: つまり、律令体制下の仏教で国家の庇護を受けて仏教の研究を行い、宗教上の実践行為は鎮護国家という理念の下で呪術的な祈祷を行う程度であったといわれる。
+REF: In other words, they were the Buddhism under the Ritsuryo system; the priests of these sects were just scholars studying Buddhism under the protection of the nation, and as for actual religious activity, they just performed some magical prayers for the idea of Chingo-Kokka (guarding the nation by Buddhism).
+GEN: In other words, it is said that Buddhism under the Ritsuryo system received the protection of the state and conducted research on Buddhism, and religious practices were performed under the philosophy of protecting the state and performing magical prayers.
+BLEU: 17.46
+model evaluation before optimization
+####################
+
+Evaluating on 50 samples...
+
+Example 1:
+JA: 1917年（大正6年）勧学が追贈されている。
+REF: In 1917, he was promoted to Kangaku ranking after his death.
+GEN: In 1917, Kangaku was given away.
+BLEU: 13.09
+
+Example 2:
+JA: それゆえに直日・直堂も、修行者も、両者ともが警策を「与える」・「いただく」前後に合掌低頭し、お互いに感謝の意を表わす。
+REF: Therefore, both of Jikijitsu or jikido and meditators make the gassho (place the palms of the hands together in the position of prayer) and bow their head to show their gratitude each other, before and after the keisaku (kyosaku) is to "give" and "receive".
+GEN: Consequently, both Nao, Naodo, and the practitioners of Nao and Nao, both of whom give and receive warnings, and both of them give and receive warnings, and both of them give and receive warnings, and both of them give and receive warnings, and both of them express their gratitude to each other.
+BLEU: 4.17
+
+Example 3:
+JA: 古市 胤栄（ふるいち いんえい、生年不詳 - 永正2年（1505年））は、戦国時代 (日本)の僧・武将。
+REF: Ine FURUICHI (year of birth unknown - 1505) is a priest and a Japanese military commander during the Sengoku period.
+GEN: Furuichi Inei (year of birth unknown - 1505) was a priest and military commander during the Sengoku period (period of warring states in Japan).
+BLEU: 44.41
+
+Example 4:
+JA: 道忠自身は鑑真の弟子で、律宗の僧侶であったが、戒壇が設けられた下野薬師寺との関連か東国に住し、広く弟子を持つ僧侶であった。
+REF: Dochu himself was a disciple of Ganjin and a Buddhist priest in Ritsu sect, but he lived in Togoku maybe because he had a relationship with Shimotsuke Yakushi-ji Temple which had Kaidan (Buddhist ordination platform) and he had many disciples across a wide range.
+GEN: Michiada himself was a disciple of Kanshin and a priest of the Ritsuryo sect, but he was a priest who had a large number of disciples and lived in Eastern Japan in connection with Shimotsuke Yakushi-ji Temple where the Kaidan was established.
+BLEU: 21.20
+
+Example 5:
+JA: つまり、律令体制下の仏教で国家の庇護を受けて仏教の研究を行い、宗教上の実践行為は鎮護国家という理念の下で呪術的な祈祷を行う程度であったといわれる。
+REF: In other words, they were the Buddhism under the Ritsuryo system; the priests of these sects were just scholars studying Buddhism under the protection of the nation, and as for actual religious activity, they just performed some magical prayers for the idea of Chingo-Kokka (guarding the nation by Buddhism).
+GEN: In other words, it is said that Buddhism under the Ritsuryo system received the protection of the state and conducted research on Buddhism, and religious practices were performed under the philosophy of protecting the state and performing magical prayers.
+BLEU: 17.46
+pre_optimization metrics
+####################
+Corpus BLEU: 13.46
+Average Sentence BLEU: 17.20 ± 20.66
+Best sentence BLEU: 100.00
+Worst sentence BLEU: 0.00
+Starting RL training
+####################
+
+--- RL Step 1/10 ---
+JA: また地獄の苦悩を済度するともいい、一切衆生を済度するに、無礙の大用あることを表して諸願成就・産生平穏...
+Generated: It is said that it can be done to relieve the sufferings of hell and that it has great utility to relieve all sentient beings by expressing wishful accomplishment and peace of birth.
+Reference: In addition, it is also said to relieve suffering in hell and control the achievement of various wishes and peaceful birth by showing that there is a benefit of no obstacle (無礙の大用) for relief of all living things.
+BLEU Reward: 0.034
+Loss: 0.030
+------------------------------------------------------------
+JA: 日代は重須を追い出され、後に西山本門寺を開き、初代住職となっている。...
+Generated: Nichiyo was expelled from Seisu, and he later founded Nishizan Honmon-ji Temple, becoming the first chief priest.
+Reference: Nichidai was thrown out from Omosu, later founded Nishiyama Honmon-ji Temple, and assumed the position of the first chief priest there.
+BLEU Reward: 0.184
+Loss: 0.104
+------------------------------------------------------------
+Average Loss: 0.0667
+
+--- RL Step 2/10 ---
+JA: 現在では臨済宗・黄檗宗と曹洞宗で、役職の位置づけがやや異なる。...
+Generated: At present, the position of office positions in the Rinzai sect, the Huangze sect and the Soto sect are somewhat different.
+Reference: Today, the details of the position differ slightly between the Rinzai/Obaku sects and the Soto sect.
+BLEU Reward: 0.154
+Loss: 0.110
+------------------------------------------------------------
+JA: 阿弥陀寺（あみだじ）は、京都市上京区にある浄土宗の寺院。...
+Generated: Amida-ji Temple is a temple of the Jodo sect located in Kamigyo Ward, Kyoto City.
+Reference: Amida-ji Temple is the temple of the Jodo (Pure Land) sect in Kamigyo Ward, Kyoto City.
+BLEU Reward: 0.489
+Loss: 0.129
+------------------------------------------------------------
+Average Loss: 0.1195
+
+--- RL Step 3/10 ---
+JA: これに土をかぶせる。...
+Generated: I put soil on this.
+Reference: Next, covered it up with clay soil.
+BLEU Reward: 0.059
+Loss: 0.052
+------------------------------------------------------------
+JA: 構成...
+Generated: Configuration
+Reference: Structure
+BLEU Reward: 0.010
+Loss: 0.003
+------------------------------------------------------------
+Average Loss: 0.0274
+
+--- RL Step 4/10 ---
+JA: 海門承朝...
+Generated: Kaimon Jocho
+Reference: Kaimon Shocho
+BLEU Reward: 0.500
+Loss: 0.697
+------------------------------------------------------------
+JA: 跋提河の春の浪哀声再び聞え、沙羅林の朝の雲憂色重て聳え、眼を戴いて天を迎げば、則ち白霧胸に塞りて散せ...
+Generated: The wailing voice of the spring of the spring of Banchi River was heard again, and the clouds of the morning of the forest of Sharo were heavy, and when the eyes came to the heaven, the white mist was scattered in the chest.
+Reference: Walking on the riverbanks this spring, we hear people wailing among the camellia trees that stand in the heavy morning mist, and when we raise our eyes to the heavens we feel a mist of sadness clouding our hearts.
+BLEU Reward: 0.053
+Loss: 0.056
+------------------------------------------------------------
+Average Loss: 0.3768
+
+--- RL Step 5/10 ---
+JA: 阿弥陀寺（あみだじ）は、京都市上京区にある浄土宗の寺院。...
+Generated: Amida-ji Temple is a temple of the Jodo sect located in Kamigyo Ward, Kyoto City.
+Reference: Amida-ji Temple is the temple of the Jodo (Pure Land) sect in Kamigyo Ward, Kyoto City.
+BLEU Reward: 0.489
+Loss: 0.131
+------------------------------------------------------------
+JA: 山号は葉室山。...
+Generated: The name of the mountain is Hamuru-zan.
+Reference: Its sango (literally, "mountain name"), which is the title prefixed to the name of a Buddhist temple, is Hamurosan.
+BLEU Reward: 0.014
+Loss: 0.008
+------------------------------------------------------------
+Average Loss: 0.0695
+
+--- RL Step 6/10 ---
+JA: 禅宗では法嗣といい、釈迦 - 摩訶迦葉へと伝えられた教外別伝の法を、代々受け継いだ付法蔵の第28祖が...
+Generated: In Zen Buddhism, it was claimed that the 28th founder of the priestly temple was Dama who inherited the Buddhist scripture of the Buddhist priestly sect to Shaka-Mahacha.
+Reference: It is called Hoshi in the Zen Sect, in which they claim that it was Daruma who was the twenty-eighth founder of fuhozo (those who, after Shakyamuni Buddha's death, successively inherited the lineage of his teachings and propagated them in India) that succeeded the Kyogai betsuden teaching (transmission of spiritual awakening without words or characters, but in a heart-to-heart way) from Shakamuni to Makakasho, through intuitive discernment from generation to generation.
+BLEU Reward: 0.010
+Loss: 0.010
+------------------------------------------------------------
+JA: 阿弥陀寺（あみだじ）は、京都市上京区にある浄土宗の寺院。...
+Generated: Amida-ji Temple is a temple of Jodo sect located in Kamikyo Ward, Kyoto City.
+Reference: Amida-ji Temple is the temple of the Jodo (Pure Land) sect in Kamigyo Ward, Kyoto City.
+BLEU Reward: 0.280
+Loss: 0.056
+------------------------------------------------------------
+Average Loss: 0.0332
+
+--- RL Step 7/10 ---
+JA: 僧尼令（そうにりょう）とは、日本律令法に設けられた編目の1つ。...
+Generated: Soniryo is one of the episodes set out in Nihon Ritsuryo-ho.
+Reference: Soniryo was a division of the Japanese ritsuryo code.
+BLEU Reward: 0.081
+Loss: 0.064
+------------------------------------------------------------
+JA: 公案禅（こうあんぜん）...
+Generated: Koanzen
+Reference: Koanzen (a method to learn the secrets of Zen by providing questions to a person seeking the secrets)
+BLEU Reward: 0.010
+Loss: 0.005
+------------------------------------------------------------
+Average Loss: 0.0344
+
+--- RL Step 8/10 ---
+JA: 地域によっては、他宗の習慣同様に、線香を三等分になるように折る場合もある。...
+Generated: In some regions, as in other sects, incense incense is broken into three parts.
+Reference: Depending on the region, an incense stick is broken into three pieces like the practice in other sects.
+BLEU Reward: 0.190
+Loss: 0.141
+------------------------------------------------------------
+JA: 日親（にっしん、1407年（応永14年） - 1488年10月21日（長享2年9月17日 (旧暦)）...
+Generated: Nikshin (1407 - October 21, 1488) was a priest of the Nichiren sect during the Muromachi period.
+Reference: Nisshin (1407 - October 30, 1488) was a priest of the Nichiren Sect in the Muromachi period.
+BLEU Reward: 0.618
+Loss: 0.163
+------------------------------------------------------------
+Average Loss: 0.1520
+
+--- RL Step 9/10 ---
+JA: いずれも江戸時代までには軍事力を喪失するか、分割されるなどして宗教と軍事力が切り離されている。...
+Generated: The religious power was separated from the military power by either losing military power until the Edo period or being divided.
+Reference: Since all temples and shrines mentioned above had either lost their military power or had been divided, their religious powers had been separated from the military powers by the Edo period.
+BLEU Reward: 0.120
+Loss: 0.072
+------------------------------------------------------------
+JA: 現在では臨済宗・黄檗宗と曹洞宗で、役職の位置づけがやや異なる。...
+Generated: Presently, the Rinzai sect, the Huangxi sect, and the Caodong sect have a slightly different position of offices.
+Reference: Today, the details of the position differ slightly between the Rinzai/Obaku sects and the Soto sect.
+BLEU Reward: 0.070
+Loss: 0.043
+------------------------------------------------------------
+Average Loss: 0.0575
+
+--- RL Step 10/10 ---
+JA: 公案禅（こうあんぜん）...
+Generated: Koanzen (Coonzen)
+Reference: Koanzen (a method to learn the secrets of Zen by providing questions to a person seeking the secrets)
+BLEU Reward: 0.010
+Loss: 0.006
+------------------------------------------------------------
+JA: 俊芿に帰依した宇都宮信房に仙遊寺を寄進され、寺号を泉涌寺と改めて再興するための勧進を行った。...
+Generated: He donated Senyu-ji Temple to Utsunomiya Nobuza, who had been bound by Shungan, and encouraged him to revive the temple name of泉涌-ji Temple.
+Reference: Nobufusa UTSUNOMIYA, who became a Buddhist thanks to Shunjo, donated Senyu-ji Temple to him, and Shunjo changed the Chinese characters used for its name and fundraised for the re-construction of the temple.
+BLEU Reward: 0.100
+Loss: 0.079
+------------------------------------------------------------
+Average Loss: 0.0429
+RL training completed
+####################
+
+After RL - Translation: It changed the ink painting of Japan.
