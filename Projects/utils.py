@@ -1,16 +1,9 @@
 from sacrebleu import corpus_bleu
 from bert_score import score
-from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
 import torch
-from transformers import Trainer, TrainingArguments
-from datasets import Dataset
-from transformers import DataCollatorForSeq2Seq
 from sacrebleu import corpus_bleu, sentence_bleu
 import numpy as np
 import torch.nn.functional as F
-import random
-import copy
-from bert_score import score
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu, SmoothingFunction
 
 from sacrebleu import corpus_bleu
@@ -33,7 +26,6 @@ def evaluate_mt(ebmt_outputs, y_test):
     return bleu_score, bert_f1
 
 
-
 def evaluate_model(model, tokenizer, test_ja, test_en, max_samples=100):
     """Evaluate model on test set with BLEU and BERTScore"""
     model.eval()
@@ -45,14 +37,17 @@ def evaluate_model(model, tokenizer, test_ja, test_en, max_samples=100):
     
     print(f"Evaluating on {min(len(test_ja), max_samples)} samples...")
     
-    smooth_fn = SmoothingFunction().method1  # prevents zero BLEU for short sentences
+    smooth_fn = SmoothingFunction().method1  # only used for sentence BLEU
     
     with torch.no_grad():
         for i, (ja_text, en_ref) in enumerate(zip(test_ja[:max_samples], test_en[:max_samples])):
             # Tokenize input
-            inputs = tokenizer(ja_text, return_tensors="pt", max_length=128, truncation=True).to("cuda")
+            inputs = tokenizer(
+                ja_text, return_tensors="pt",
+                max_length=128, truncation=True
+            ).to("cuda")
             
-            # Generate translation (beam search for quality)
+            # Generate translation
             outputs = model.generate(
                 **inputs,
                 forced_bos_token_id=tokenizer.lang_code_to_id["en_XX"],
@@ -68,16 +63,19 @@ def evaluate_model(model, tokenizer, test_ja, test_en, max_samples=100):
             generated_translations.append(generated)
             reference_translations.append(en_ref)
             
-            # Compute sentence-level BLEU (tokenized)
+            # Sentence-level BLEU (tokenized)
             try:
                 gen_tokens = generated.split()
                 ref_tokens = en_ref.split()
-                sent_bleu = sentence_bleu([ref_tokens], gen_tokens, smoothing_function=smooth_fn) * 100
+                sent_bleu = sentence_bleu(
+                    [ref_tokens], gen_tokens,
+                    smoothing_function=smooth_fn
+                ) * 100
             except:
                 sent_bleu = 0.0
             sentence_bleus.append(sent_bleu)
             
-            # Compute sentence-level BERTScore (F1)
+            # Sentence-level BERTScore
             try:
                 _, _, F1 = score([generated], [en_ref], lang="en", verbose=False)
                 sent_bert = F1.item()
@@ -85,7 +83,7 @@ def evaluate_model(model, tokenizer, test_ja, test_en, max_samples=100):
                 sent_bert = 0.0
             sentence_berts.append(sent_bert)
             
-            # Print a few examples
+            # Print examples
             if i < 5:
                 print(f"\nExample {i+1}:")
                 print(f"JA:  {ja_text}")
@@ -93,12 +91,13 @@ def evaluate_model(model, tokenizer, test_ja, test_en, max_samples=100):
                 print(f"GEN: {generated}")
                 print(f"BLEU: {sent_bleu:.2f}, BERTScore F1: {sent_bert:.3f}")
     
-    # Corpus-level BLEU (tokenized)
+    # Corpus-level BLEU (SacreBLEU, raw text)
     try:
         corpus_bleu_score = corpus_bleu(
-            [[ref.split()] for ref in reference_translations],
-            [gen.split() for gen in generated_translations]
-        ) * 100
+            generated_translations,
+            [reference_translations],   # references must be a list of lists
+            smooth_method="exp"
+        ).score
     except:
         corpus_bleu_score = 0.0
     
