@@ -5,6 +5,7 @@ from sacrebleu import corpus_bleu, sentence_bleu
 import numpy as np
 import torch.nn.functional as F
 from nltk.translate.bleu_score import sentence_bleu, corpus_bleu, SmoothingFunction
+import matplotlib.pyplot as plt
 
 from sacrebleu import corpus_bleu
 
@@ -120,3 +121,49 @@ def evaluate_model(model, tokenizer, test_ja, test_en, max_samples=100):
         'sentence_bleus': sentence_bleus,
         'sentence_berts': sentence_berts
     }
+
+
+def tolkienize_plot():
+    """Apply Middle-earth styling to the current matplotlib plot"""
+    import matplotlib.pyplot as plt
+    
+    colors = {
+        'gold': '#d4af37',
+        'light_gold': '#f4e968', 
+        'text': '#e8d5a0',
+        'bg_dark': '#1a1a2e',
+        'bg_mid': '#16213e',
+        'ring_fire': '#ff6b35',  # For negative sentiment
+        'shire_green': '#7fb069'  # For positive sentiment
+    }
+    
+    ax = plt.gca()
+    fig = plt.gcf()
+    
+    # Background - dark like the depths of Moria
+    ax.set_facecolor(colors['bg_dark'])
+    fig.patch.set_facecolor(colors['bg_mid'])
+    
+    # Grid - subtle golden lines like elvish script
+    ax.grid(True, color=colors['gold'], alpha=0.3, linestyle='--', linewidth=0.8)
+    
+    # Spines - golden borders worthy of the One Ring
+    for spine in ax.spines.values():
+        spine.set_color(colors['gold'])
+        spine.set_linewidth(2)
+    
+    # Text colors - parchment gold
+    ax.tick_params(colors=colors['text'], which='both')
+    ax.xaxis.label.set_color(colors['text'])
+    ax.yaxis.label.set_color(colors['text'])
+    ax.title.set_color(colors['gold'])
+    
+    # Legend styling
+    legend = ax.get_legend()
+    if legend:
+        legend.get_frame().set_facecolor(colors['bg_dark'])
+        legend.get_frame().set_edgecolor(colors['gold'])
+        legend.get_frame().set_linewidth(1.5)
+        legend.get_frame().set_alpha(0.9)
+        for text in legend.get_texts():
+            text.set_color(colors['text'])
