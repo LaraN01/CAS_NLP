@@ -1,0 +1,168 @@
+Lara edits: 
+
+1. created a db with the info from the NLP course
+2. updated your mcp server to read the database when ask info on the course
+3. tested manually (w/o launching the mcp as I was using a open-webui this morning) I didn't have the setup for the extension of the mcp
+
+
+MCP tutorial   
+
+1. Added several tools to file mcp_server.py (get_cas_nlp_info, get_weather, current_datetime)
+2. Added CAS Info as resource first. But this did not work, so added it as tool instead.
+3. Used qwen3:4b as local LLMs
+4. (downloaded modules from requirements.txt into dedicated virtual env)
+  (- conda create --name myenv python=3.12) << if venv newly created
+  - $ conda activate myenv
+  - $ pip install -r requirements.txt
+5. Ran: $ python ollama_client.py 
+
+
+
+Sample output from ollama_client.py
+
+
+((DSPy2025) lingdp@lingdps-MacBook-Air mcp-tutorial % python ollama_client.py
+--- Client: Fetching tools from MCP server... ---
+[10/07/25 23:22:54] INFO     Processing request of type ListToolsRequest                                                              server.py:664
+--- Client: Loaded 4 tools. ---
+--- Client: Fetching resources from MCP server... ---
+                    INFO     Processing request of type ListResourcesRequest                                                          server.py:664
+--- Client: Loaded 0 resources. ---
+
+Ollama MCP Client Initialized. How can I help?
+Model: qwen3:4b
+Type 'exit' to quit.
+
+###################################################################################
+> What is the current date and time?
+###################################################################################
+--- Client: Model wants to call 'current_datetime' with args: {} ---
+[10/07/25 23:09:20] INFO     Processing request of type CallToolRequest                                                               server.py:664
+--- Client: Received tool output: '2025-10-07 23:09:20...' ---
+
+Assistant:
+The current date and time is **2025-10-07 23:09:20**.
+
+###################################################################################
+> What is the current weather in Paris, France?
+###################################################################################
+--- Client: Model wants to call 'get_weather' with args: {'city': 'Paris, France'} ---
+[10/07/25 23:09:55] INFO     Processing request of type CallToolRequest                                                               server.py:664
+--- Client: Received tool output: 'Location: Paris, Île-de-France, France
+Temperature: 15.1°C
+Feels like: 15.4°C
+Conditions: Partly clo...' ---
+
+Assistant:
+The current weather in Paris, France is **partly cloudy** with a temperature of **15.1°C** (feels like **15.4°C**). Humidity is at **86%**, wind speed is **3.6 km/h**, and there is **no precipitation**.
+
+###################################################################################
+> When did the CAS NLP start this year at the university of Bern?
+###################################################################################
+--- Client: Model wants to call 'current_datetime' with args: {} ---        <-- uses tool instead of resource!!
+[10/07/25 23:11:52] INFO     Processing request of type CallToolRequest                                                               server.py:664
+--- Client: Received tool output: '2025-10-07 23:11:52...' ---
+
+> what are the main topics in the CAS NLP course?
+--- Client: Model wants to call 'get_cas_nlp_info' with args: {} ---
+[10/07/25 23:23:40] INFO     Processing request of type CallToolRequest                                                               server.py:664
+--- Client: Received tool output: 'CAS Natural Language Processing - AI for Language
+Mathematical Institute
+Registration for 2026/2027 ...' ---
+
+Assistant:
+Based on the detailed brochure you provided, here's a **clear, concise summary** of key information about the University of Bern's **Certificate of Advanced Studies (CAS) in Natural Language Processing (NLP)** — designed for practical, hands-on learning without prior expertise. I've focused on what matters most for prospective students:
+
+---
+
+### ✅ **What This Program Is**
+- A **6-module, 2-year intensive program** (not a traditional degree) for professionals and students with **any university degree** (BSc/MSc/PhD).
+- **Hands-on focus**: Learn to build and deploy real NLP models (e.g., LLMs), not just theory.
+- **Small groups**: Max 20 participants total (ensures personalized support).
+- **No prior NLP knowledge required** — ideal for practitioners new to the field.
+
+---
+
+### 🎯 **Who Should Join?**
+| **Ideal For**                          | **Not Ideal For**                     |
+|----------------------------------------|---------------------------------------|
+| Professionals in tech, data science, or AI | Those needing a full academic degree |
+| Practitioners who want to **apply NLP immediately** (e.g., build chatbots, analyze text) | People without a university degree |
+| Career changers or researchers seeking practical skills | Those wanting theoretical NLP research |
+
+> 💡 **Key phrase from brochure**: *"SUITABLE AND INTENDED FOR PRACTITIONERS AND RESEARCHERS"*
+
+---
+
+### 📅 **Program Structure & Timeline (2024–2025 Cohort)**
+| **Module** | **Focus**                          | **Key Details**                                                                 |
+|------------|-------------------------------------|--------------------------------------------------------------------------------|
+| **M1–M2**  | Foundations (Python, ML basics)     | Taught in Bern (Switzerland) — *no travel*                                      |
+| **M3**     | **Neural Networks**                 | **Italy trip** (1 week) — hands-on model building                              |
+| **M4**     | **Transformers & LLMs**            | Weekly sessions (Fri) — *no travel*                                           |
+| **M5**     | Ethics & Philosophy of NLP          | Weekly sessions (Fri)                                                          |
+| **M6**     | **Frontier Applications**           | **Swiss Alps trip** (1 week) — real-world project work                         |
+| **Final**  | Project + Certification             | Deadline: **June 15, 2025** (for 2024 cohort)                                 |
+
+> 🌟 **Critical Note**:  
+> - **M3 and M6 include 1-week international trips** (Italy/Swiss Alps) — *paid for in program fees*.  
+> - **Final project** must be submitted by **June 15, 2025** (late submissions delay diploma).
+
+---
+
+### 💰 **Cost & Funding**
+| **Option**                     | **Price (CHF)** | **Who Qualifies**                     |
+|--------------------------------|-----------------|---------------------------------------|
+| Full CAS (all 6 modules)      | 9,600            | All participants                     |
+| **Student/University Employee**| **5,600**       | Current students or Bern employees    |
+| **Single modules** (half-day) | 300              | *Accredited for full CAS*            |
+| **Payment plan**              | Available       | All options                          |
+
+> ✅ **Cost includes**:  
+> - All modules, materials, teaching platforms, coffee breaks, **full pension hotels** (for M3/M6 trips), and diploma apero.
+
+---
+
+### 🚫 **Key Requirements & Rules**
+1. **Mandatory**: Attend **one information event** (free) before registration.
+2. **Laptops required**: Must bring your own (no university-provided devices).
+3. **Cancellation**: Free until **June 30, 2025** (after this date, fees apply).
+4. **No prior NLP knowledge needed** — beginner-friendly.
+5. **Projects**: Must be practical (e.g., build a model for real-world use).
+
+---
+
+### 🌟 **Why This Program Stands Out (From Testimonials)**
+> *"After the course, I was not only able to better understand how these models work, but also to train such models myself and programme them for my needs."*  
+> — **Student who built LLMs for work**  
+>   
+> *"Sukanya was very kind and took her time after one of her lectures to help me install TensorFlow... Without her help, none of the implementations presented in this report would have been possible."*  
+> — **Student with hands-on coding support**
+
+**Key strengths**:  
+- **Real-world projects** (not just theory)  
+- **Small group size** (personalized feedback)  
+- **Practical trips** (Italy/Swiss Alps) that build team dynamics  
+- **No academic pressure** (focus on application, not exams)
+
+---
+
+### 🚨 **Critical Next Steps for Prospective Students**
+1. **Check eligibility**: You must have a **university degree** (BSc/MSc/PhD).
+2. **Register by December** (next intake opens in Dec 2024).
+3. **Attend one info event** (free) — *required for acceptance*.
+4. **Cancel by June 30, 2025** to avoid fees.
+
+👉 **Register here**: [University of Bern CAS NLP Registration](https://www.unibe.ch/continuing-education/cas-nlp) (link from brochure)
+
+---
+
+### 🔍 Summary in 3 Sentences
+> The University of Bern’s **CAS in NLP** is a **practical, 2-year program** for professionals to build real NLP models (like LLMs) with hands-on projects, small groups, and international trips — all for **CHF 5,600–9,600** (discounted for students/university employees). No prior knowledge needed. Final project deadline: **June 15, 2025**.
+
+If you're considering this program, I’d recommend:  
+1. Attending an info event to ask specific questions.  
+2. Confirming your eligibility (university degree).  
+3. Applying by **December 2024** for the 2025 cohort.
+
+Let me know if you’d like help with **application questions**, **cost breakdowns**, or **how this compares to other programs**! 😊
